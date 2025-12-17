@@ -15,7 +15,6 @@ class ParticipationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('email', EmailType::class)
             ->add('payment', PaymentType::class);
     }
 

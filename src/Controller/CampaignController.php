@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/campaign')]
+#[Route('/')]
 final class CampaignController extends AbstractController
 {
 
@@ -29,7 +29,7 @@ final class CampaignController extends AbstractController
 
 
 
-    #[Route('/new', name: 'app_campaign_new', methods: ['GET', 'POST'])]
+    #[Route('/campaign/new', name: 'app_campaign_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $campaign = new Campaign();
@@ -37,6 +37,7 @@ final class CampaignController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $campaign->setUser($this->getUser());
             $entityManager->persist($campaign);
             $entityManager->flush();
 
@@ -49,7 +50,7 @@ final class CampaignController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_campaign_show', methods: ['GET'])]
+    #[Route('/campaign/{id}', name: 'app_campaign_show', methods: ['GET'])]
     public function show(Campaign $campaign, CampaignRepository $campaignRepository): Response
     {
         return $this->render('campaign/show.html.twig', [
@@ -58,7 +59,7 @@ final class CampaignController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/payment', name: 'app_campaign_payment', methods: ['GET', 'POST'])]
+    #[Route('/campaign/{id}/payment', name: 'app_campaign_payment', methods: ['GET', 'POST'])]
     public function payment(Request $request, Campaign $campaign, EntityManagerInterface $entityManager): Response
     {
 
@@ -73,6 +74,7 @@ final class CampaignController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $participation->setUser($this->getUser());
             $entityManager->persist($participation);
             $entityManager->flush();
 
@@ -85,7 +87,7 @@ final class CampaignController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_campaign_edit', methods: ['GET', 'POST'])]
+    #[Route('/campaign/{id}/edit', name: 'app_campaign_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Campaign $campaign, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CampaignType::class, $campaign);
@@ -103,7 +105,7 @@ final class CampaignController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_campaign_delete', methods: ['POST'])]
+    #[Route('/campaign/{id}', name: 'app_campaign_delete', methods: ['POST'])]
     public function delete(Request $request, Campaign $campaign, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $campaign->getId(), $request->getPayload()->getString('_token'))) {

@@ -41,6 +41,10 @@ class Campaign
     #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'campaign', orphanRemoval: true)]
     private Collection $participations;
 
+    #[ORM\ManyToOne(inversedBy: 'campaigns')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct(DateTime $created_at = new DateTime(), DateTime $updated_at = new DateTime())
     {
         $this->created_at = $created_at;
@@ -151,6 +155,18 @@ class Campaign
                 $participation->setCampaign(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

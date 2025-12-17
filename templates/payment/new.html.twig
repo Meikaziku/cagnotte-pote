@@ -16,7 +16,19 @@
 
 				<ul id="nav-mobile" class="sidenav">
 					<li>
-						<a href="create.html" class="waves-effect waves-light btn pink lighten-1">Créer une campagne</a>
+						<a href="{{ path(name = 'app_campaign_new') }}" class="waves-effect waves-light btn pink lighten-1">Créer une campagne</a>
+					</li>
+				</ul>
+
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="{{ path(name = 'app_logout') }}" class="waves-effect waves-light btn blue lighten-1">Logout</a>
+					</li>
+				</ul>
+
+				<ul id="nav-mobile" class="sidenav">
+					<li>
+						<a href="{{ path(name = 'app_logout') }}" class="waves-effect waves-light btn blue lighten-1">Logout</a>
 					</li>
 				</ul>
 				<a href="#" data-target="nav-mobile" class="sidenav-trigger">
@@ -55,11 +67,6 @@
 						{{ form_start(form) }}
 						<h5 class="center">Votre identité</h5>
 						<div class="input-field col s12 l6">
-							{{ form_widget(form.email, {
-                    			'attr': {
-                        		'class': 'validate',}
-                         	}) }}
-							{{ form_label(form.email) }}
 						</div>
 						<div class="input-field col s12 l6">
 							{{ form_widget(form.payment.amount, {
@@ -185,8 +192,8 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Made with love by
-				<a class="white-text" href="http://trombi.simplon-roanne.com/">Simplon Roanne</a>
+				fait par Yanis
+				<a class="white-text" href="http://trombi.simplon-roanne.com/">Simplon Saint-Etienne</a>
 			</div>
 		</div>
 	</footer>
