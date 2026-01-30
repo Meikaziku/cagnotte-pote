@@ -43,7 +43,7 @@ Les utilisateurs peuvent :
 
 Suivez ces étapes pour lancer le projet en local :
 
-### 1️⃣ Dans le terminal, Cloner le projet dans le terminal
+### 1️⃣ Dans le terminal, Cloner le projet
 ```bash
 git clone https://github.com/Meikaziku/cagnotte-pote.git ./
 ```
@@ -88,4 +88,5 @@ symfony server:start
 
 
 Accédez ensuite au site via l'adress fournit par le terminal: http://adresseIp
+
 
