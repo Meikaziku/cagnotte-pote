@@ -38,3 +38,48 @@ Les utilisateurs peuvent :
 - Barre de progression indiquant l’avancement vers l’objectif
 - Nombre de participants
 - Historique des contributions
+
+## 🚀 Installation du projet Cagnotte Potes
+
+Suivez ces étapes pour lancer le projet en local :
+
+### 1️⃣ Dans le terminal, Cloner le projet dans le terminal
+```bash
+git clone https://github.com/Meikaziku/cagnotte-pote.git ./
+```
+
+### 2️⃣ Dans le terminal, Installer les dépendances
+```bash
+composer install
+```
+
+### 3️⃣ Dans la racine de ton projet, configurer l’environnement
+
+Copier, coller le fichier .env → .env.local :
+
+```bash
+cp .env .env.local
+```
+
+Modifier DATABASE_URL :
+
+```bash
+DATABASE_URL="mysql://user:password@127.0.0.1:3306/nom_de_la_db?serverVersion=8.0"
+```
+### 4️⃣ Dans le terminal, Créer la base de données
+```bash
+symfony console doctrine:database:create
+```
+
+### 5️⃣ Dans le terminal, appliquer les migrations
+```bash
+symfony console doctrine:migrations:migrate
+```
+
+### 6️⃣ Dans le terminal, Lancer le serveur local
+```bash
+symfony server:start
+```
+
+
+Accédez ensuite au site via l'adress fournit par le terminal: http://adresseIp
