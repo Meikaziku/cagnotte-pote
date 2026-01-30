@@ -76,6 +76,11 @@ symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate
 ```
 
+### 5️⃣ Dans le terminal, installer Tailwinds
+```bash
+symfony console doctrine:migrations:migrate
+```
+
 ### 6️⃣ Dans le terminal, Lancer le serveur local
 ```bash
 symfony server:start
@@ -83,3 +88,4 @@ symfony server:start
 
 
 Accédez ensuite au site via l'adress fournit par le terminal: http://adresseIp
+
